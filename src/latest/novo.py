@@ -40,30 +40,34 @@ def pearson(dados):
     return pearson
 
 def principal():
-    # I. carregamos a matriz de dados    
+    # I. carregamos a matriz de dados  
+
+    # Diretores:
+    dados = n.loadtxt('notas_diretores.txt')  
 
     # Filósofos:
     #dados = n.loadtxt('notas_filosofos.txt')
 
     # Compositores:
     #dados = n.loadtxt('notas_compositores.txt')
-    # covar, autovetores, autovalores, autovalores_prop, dados_finais = pca(dados)
-    # print '\nMatriz de covariância:\n', n.around(covar, decimals=2)
-    # print '\nMatriz de correlação de Pearson:\n', n.around(pearson(dados), decimals=2)
-    # print '\nAutovalores:\n', n.around(autovalores_prop, decimals=2)
-    # print '\nVariância dos Autovalores:\n', n.around(n.var(autovalores_prop), decimals=2)
-    # print '\nSoma dos dois primeiros:\n', round(autovalores_prop[0] + autovalores_prop[1], ndigits=2)
-    # print '\nDados finais:\n', n.around(dados_finais, decimals=2)
-    # c1 = dados_finais[:,0]
-    # c2 = dados_finais[:,1]
+    covar, autovetores, autovalores, autovalores_prop, dados_finais = pca(dados)
+    print '\nMatriz de covariância:\n', n.around(covar, decimals=2)
+    print '\nMatriz de correlação de Pearson:\n', n.around(pearson(dados), decimals=2)
+    print '\nAutovalores:\n', n.around(autovalores_prop, decimals=2)
+    print '\nVariância dos Autovalores:\n', n.around(n.var(autovalores_prop), decimals=2)
+    print '\nSoma dos dois primeiros:\n', round(autovalores_prop[0] + autovalores_prop[1], ndigits=2)
+    print '\nDados finais:\n', n.around(dados_finais, decimals=2)
+    c1 = dados_finais[:,0]
+    c2 = dados_finais[:,1]
 
-    # p.clf()
-    # p.plot(c1, c2)
-    # p.xlim((-4,4))
-    # p.ylim((-4,4))
-    # p.savefig('pca.eps')
+    p.clf()
+    p.plot(c1, c2)
+    p.xlim((-4,4))
+    p.ylim((-4,4))
+    p.savefig('pca.eps')
 
     # Aleatórios:
+    """
     num_agentes = [7,10,15,20,25,30,35,40,45,50,100, 150, 200, 250, 300, 350, 400, 450, 500, 1000]
     num_vars = 8
     a = []
@@ -88,6 +92,7 @@ def principal():
         print '\nVariância dos autovalores:', [n.var(av) for av in autovalores_todos[i]]
     # p.plot(num_agentes, a)
     # p.savefig('foo.eps')
+    """
         
 if __name__ == '__main__':
     principal()
